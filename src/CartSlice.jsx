@@ -8,7 +8,6 @@ export const CartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
         const {name, image, cost} = action.payload
-        console.log("plant.....",action.payload)
         const itemExist = state.items.find(item => item.name === name)
         if(itemExist){
             itemExist.quantity++
@@ -19,10 +18,7 @@ export const CartSlice = createSlice({
     },
     removeItem: (state, action) => {
         const {name} = action.payload
-
-        console.log("name....",state.items)
         const itemChecked = state.items.some(item => item.name === name)
-        console.log("itemChecked....",itemChecked)
         if(itemChecked){
             const itemToremove = state.items.filter(item => item.name !== name)
             return itemToremove
